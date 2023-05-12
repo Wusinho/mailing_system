@@ -8,6 +8,9 @@ es:
   global:
     forms:
       submit: Subscribete ahora!
+      men: 'Moda Masculina'
+      women: 'Moda Femenina'
+      children: 'Moda Infantil'
   home_page:
     index:
       welcome: "Bienvenido. Pronto lanzaremos nuestro sitio en este país."

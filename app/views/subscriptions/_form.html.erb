@@ -8,7 +8,7 @@
     <% Subscription::PREFERENCES.each do |preference| %>
       <div>
         <%= form.check_box :preferences, { multiple: true }, preference, nil %>
-        <%= form.label "#{preference}'s fashion".to_sym %>
+        <%= fashion_preferences(preference, form) %>
       </div>
     <% end %>
 

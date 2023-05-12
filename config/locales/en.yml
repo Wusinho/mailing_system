@@ -8,6 +8,9 @@ en:
   global:
     forms:
       submit: Subscribe me!
+      men: Men's Fashion
+      women: Woman's Fashion
+      children: Children's Fashion
   home_page:
     index:
       welcome: "Welcome! Soon we will launch our site in this country."
