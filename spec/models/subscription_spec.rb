@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Subscription, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe Subscription do
+    context 'validations' do
+      it 'should validate presence' do
+        should validate_presence_of(:email)
+        should validate_presence_of(:preferences)
+      end
+    end
+  end
 end
