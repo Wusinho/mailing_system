@@ -4,6 +4,7 @@ class SubscriptionsController < ApplicationController
 
     if @subscription.save
     else
+      turbo_error_message(@subscription)
     end
   end
 

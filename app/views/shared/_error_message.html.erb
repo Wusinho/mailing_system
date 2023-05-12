@@ -1,0 +1,11 @@
+<%= turbo_frame_tag 'error_message' do %>
+  <div data-controller="error-message" class="error__message">
+    <div class="px-2">
+      <%= message %>
+    </div>
+    <%= link_to 'X','', data: {
+      controller: 'error-message',
+      action: 'error-message#close_error_message'
+    }, class: 'px-3' %>
+  </div>
+<% end %>
