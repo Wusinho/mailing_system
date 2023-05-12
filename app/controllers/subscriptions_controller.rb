@@ -3,7 +3,7 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.new(subscription_params)
 
     if @subscription.save
-      else
+    else
     end
   end
 
@@ -11,7 +11,6 @@ class SubscriptionsController < ApplicationController
 
   def subscription_params
     params.require(:subscription).permit(:email, preferences: [])
-          .tap { |p| p[:preferences].reject!(&:blank?) }
   end
 
 

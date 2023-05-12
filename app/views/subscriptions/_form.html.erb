@@ -4,9 +4,12 @@
     <%= form.text_field :email %>
   </div>
 
-  <%= form.collection_check_boxes :preferences, Subscription::PREFERENCES, :to_s, :humanize, required: true %>
-
-
+    <% Subscription::PREFERENCES.each do |preference| %>
+      <div>
+        <%= form.check_box :preferences, { multiple: true }, preference, nil %>
+        <%= form.label "#{preference}'s fashion".to_sym %>
+      </div>
+    <% end %>
 
   <div class="actions">
     <%= form.submit %>
