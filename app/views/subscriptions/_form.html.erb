@@ -1,0 +1,14 @@
+<%= form_with model: subscription do |form| %>
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <%= form.collection_check_boxes :preferences, Subscription::PREFERENCES, :to_s, :humanize, required: true %>
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

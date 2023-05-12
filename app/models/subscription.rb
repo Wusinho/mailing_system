@@ -1,3 +1,9 @@
 class Subscription < ApplicationRecord
-  validates_presence_of :email, :preferences
+  validates :email, presence: true
+  validates :preferences, presence: true
+
+  PREFERENCES = %w[men women children]
+
+  # serialize :preferences, Array
+  validates :preferences, inclusion: { in: PREFERENCES, allow_blank: true }
 end

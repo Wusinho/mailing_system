@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_12_024720) do
 
   create_table "subscriptions", force: :cascade do |t|
     t.string "email", null: false
-    t.integer "preferences", null: false
+    t.string "preferences", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
