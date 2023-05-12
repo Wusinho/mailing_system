@@ -1,0 +1,17 @@
+es:
+  activerecord:
+  models:
+    attributes:
+      email: "Correo Electronico"
+      email_placeholder: 'tu@correo.com'
+      preferences: "Preferencias :"
+  global:
+    forms:
+      submit: Subscribete ahora!
+      men: 'Moda Masculina'
+      women: 'Moda Femenina'
+      children: 'Moda Infantil'
+  home_page:
+    index:
+      welcome: "Bienvenido. Pronto lanzaremos nuestro sitio en este país."
+      services_html: "Subscribete para recibir nuevas noticias"

@@ -1,17 +1,18 @@
 <%= form_with model: subscription, id: 'subscription_form' do |form| %>
   <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.label t 'models.attributes.email' %>
+    <%= form.text_field :email, placeholder: t('models.attributes.email_placeholder') %>
   </div>
 
+  <h4><%= t 'models.attributes.preferences' %></h4>
     <% Subscription::PREFERENCES.each do |preference| %>
       <div>
         <%= form.check_box :preferences, { multiple: true }, preference, nil %>
-        <%= form.label "#{preference}'s fashion".to_sym %>
+        <%= fashion_preferences(preference, form) %>
       </div>
     <% end %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit t 'global.forms.submit', data: { disable: false } %>
   </div>
 <% end %>
