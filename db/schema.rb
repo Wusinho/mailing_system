@@ -15,24 +15,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_12_215222) do
   enable_extension "plpgsql"
 
   create_table "coupon_questions", force: :cascade do |t|
-    t.bigint "coupon_survey_id", null: false
-    t.bigint "question_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["coupon_survey_id"], name: "index_coupon_questions_on_coupon_survey_id"
-    t.index ["question_id"], name: "index_coupon_questions_on_question_id"
-  end
-
-  create_table "coupon_surveys", force: :cascade do |t|
     t.bigint "subscription_id", null: false
+    t.bigint "question_id", null: false
+    t.string "answer", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["subscription_id"], name: "index_coupon_surveys_on_subscription_id"
+    t.index ["question_id"], name: "index_coupon_questions_on_question_id"
+    t.index ["subscription_id"], name: "index_coupon_questions_on_subscription_id"
   end
 
   create_table "questions", force: :cascade do |t|
+    t.string "question_type", null: false
     t.string "question", null: false
     t.string "alternatives", default: [], array: true
+    t.string "category_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,7 +41,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_12_215222) do
     t.index ["email"], name: "index_subscriptions_on_email", unique: true
   end
 
-  add_foreign_key "coupon_questions", "coupon_surveys"
   add_foreign_key "coupon_questions", "questions"
-  add_foreign_key "coupon_surveys", "subscriptions"
+  add_foreign_key "coupon_questions", "subscriptions"
 end
