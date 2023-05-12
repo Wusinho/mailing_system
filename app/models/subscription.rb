@@ -4,6 +4,5 @@ class Subscription < ApplicationRecord
 
   PREFERENCES = %w[men women children]
 
-  # serialize :preferences, Array
   validates :preferences, inclusion: { in: PREFERENCES, allow_blank: true }
 end
