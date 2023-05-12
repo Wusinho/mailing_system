@@ -1,7 +1,7 @@
 <%= form_with model: subscription, id: 'subscription_form' do |form| %>
   <div class="field">
     <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, placeholder: t('models.attributes.email_placeholder') %>
   </div>
 
     <% Subscription::PREFERENCES.each do |preference| %>
@@ -12,6 +12,6 @@
     <% end %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit t 'global.forms.submit', data: { disable: false } %>
   </div>
 <% end %>
