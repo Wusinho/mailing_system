@@ -1,0 +1,17 @@
+<%= form_with model: subscription, id: 'subscription_form' do |form| %>
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+    <% Subscription::PREFERENCES.each do |preference| %>
+      <div>
+        <%= form.check_box :preferences, { multiple: true }, preference, nil %>
+        <%= form.label "#{preference}'s fashion".to_sym %>
+      </div>
+    <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
