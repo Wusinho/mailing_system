@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_12_024720) do
     t.string "preferences", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_subscriptions_on_email", unique: true
   end
 
 end
