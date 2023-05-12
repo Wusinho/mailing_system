@@ -1,6 +1,6 @@
 class Subscription < ApplicationRecord
   include Validatetable
-  has_many :coupon_questions
+  has_one :survey
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :preferences, presence: true
   validate :email_api_validation

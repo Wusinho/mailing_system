@@ -10,19 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_12_215222) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_12_224536) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "coupon_questions", force: :cascade do |t|
-    t.bigint "subscription_id", null: false
-    t.bigint "question_id", null: false
-    t.string "answer", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["question_id"], name: "index_coupon_questions_on_question_id"
-    t.index ["subscription_id"], name: "index_coupon_questions_on_subscription_id"
-  end
 
   create_table "questions", force: :cascade do |t|
     t.string "question_type", null: false
@@ -41,6 +31,35 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_12_215222) do
     t.index ["email"], name: "index_subscriptions_on_email", unique: true
   end
 
-  add_foreign_key "coupon_questions", "questions"
-  add_foreign_key "coupon_questions", "subscriptions"
+  create_table "survey_answers", force: :cascade do |t|
+    t.bigint "survey_id", null: false
+    t.bigint "question_id", null: false
+    t.string "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_survey_answers_on_question_id"
+    t.index ["survey_id"], name: "index_survey_answers_on_survey_id"
+  end
+
+  create_table "survey_questions", force: :cascade do |t|
+    t.bigint "survey_id", null: false
+    t.bigint "question_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_survey_questions_on_question_id"
+    t.index ["survey_id"], name: "index_survey_questions_on_survey_id"
+  end
+
+  create_table "surveys", force: :cascade do |t|
+    t.bigint "subscription_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subscription_id"], name: "index_surveys_on_subscription_id"
+  end
+
+  add_foreign_key "survey_answers", "questions"
+  add_foreign_key "survey_answers", "surveys"
+  add_foreign_key "survey_questions", "questions"
+  add_foreign_key "survey_questions", "surveys"
+  add_foreign_key "surveys", "subscriptions"
 end
