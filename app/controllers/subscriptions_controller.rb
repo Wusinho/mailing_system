@@ -4,7 +4,6 @@ class SubscriptionsController < ApplicationController
 
     if @subscription.save
       else
-
     end
   end
 
