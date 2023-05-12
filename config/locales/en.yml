@@ -7,7 +7,7 @@ en:
       preferences: "Preferences :"
   global:
     forms:
-      submit: Subscribe!
+      submit: Subscribe me!
   home_page:
     index:
       welcome: "Welcome! Soon we will launch our site in this country."

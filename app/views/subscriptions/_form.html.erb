@@ -1,9 +1,10 @@
 <%= form_with model: subscription, id: 'subscription_form' do |form| %>
   <div class="field">
-    <%= form.label :email %>
+    <%= form.label t 'models.attributes.email' %>
     <%= form.text_field :email, placeholder: t('models.attributes.email_placeholder') %>
   </div>
 
+  <h4><%= t 'models.attributes.preferences' %></h4>
     <% Subscription::PREFERENCES.each do |preference| %>
       <div>
         <%= form.check_box :preferences, { multiple: true }, preference, nil %>
