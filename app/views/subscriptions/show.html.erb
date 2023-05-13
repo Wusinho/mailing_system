@@ -1,1 +1,6 @@
-<%= render 'subscriptions/questions', survey: @survey %>
+<% if @survey.completed %>
+  <h2>You Completed the survey </h2>
+<% else %>
+  <%= render 'subscriptions/questions', survey: @survey %>
+<% end %>
+

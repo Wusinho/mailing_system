@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_12_224536) do
 
   create_table "surveys", force: :cascade do |t|
     t.bigint "subscription_id", null: false
+    t.boolean "completed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subscription_id"], name: "index_surveys_on_subscription_id"
