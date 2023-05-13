@@ -2,15 +2,9 @@ class SurveysController < ApplicationController
   before_action :set_survey, only: [:update]
   def update
     if @survey.update(survey_params)
-      p '*'*100
-      p @survey.survey_answers
-      p '*'*100
-
+        redirect_to root_path
       else
-        p '*'*100
-        p @survey.errors
-        p '*'*100
-
+        turbo_error_message(@survey)
     end
   end
 
