@@ -3,6 +3,7 @@ class SubscriptionsController < ApplicationController
   before_action :create_survey, only: [:show]
 
   def show
+    @survey_questions.each { |question| SurveyAnswer.find_or_create_by(question_id: question.id, survey_id: @subscription.survey.id)  }
 
   end
   def create
@@ -23,6 +24,7 @@ class SubscriptionsController < ApplicationController
   def create_survey
     @subscription.create_survey
     @survey_questions = @subscription.questions.distinct
+    @survey = @subscription.survey
   end
 
   def subscription_params

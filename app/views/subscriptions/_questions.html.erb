@@ -1,27 +1,8 @@
-<%= form_with(model: survey) do |form| %>
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+<%= form_with model: survey, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' } do |f| %>
 
-  <div data-controller="nested-form">
-    <template data-nested-form-target='template'>
-      <%= form.fields_for :questions, Question.new, child_index: 'TEMPLATE_RECORD' do |question| %>
-        <%= render 'question_fields', form: question %>
-      <% end %>
-    </template>
+  <%= f.fields_for :survey_questions do |answer_fields| %>
+    <%= render "subscriptions/answer_form", f: answer_fields, f_parent: f %>
+  <% end %>
 
-    <%= form.fields_for :questions do |question| %>
-      <%= render 'question_fields', form: question %>
-    <% end %>
-
-    <div data-nested-form-target="add_item">
-      <%= link_to "Add Question", "#", data: { action: "nested-form#add_association" } %>
-    </div>
-  </div>
-
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <div data-nested-form-target="target"></div>
 <% end %>
