@@ -1,4 +1,4 @@
-type = 'coupon_question'
+type = 'coupon_subscription_questions'
 
   Question.create(question: 'Cual es tu edad?', alternatives: (16..99).to_a, question_type: :single_choice, category_type: type)
   Question.create(question: 'Cual es tu nivel educativo?', alternatives: %w[primaria secundaria preparatoria universidad otros ninguna], question_type: 0, category_type: type)

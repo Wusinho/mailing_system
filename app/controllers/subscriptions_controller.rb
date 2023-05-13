@@ -20,9 +20,8 @@ class SubscriptionsController < ApplicationController
   end
 
   def create_survey
-    @survey = @subscription.create_survey
-    @survey_questions = @survey.questions
-    @survey_questions.each { | question | @survey.survey_answers.build(question_id: question.id) }
+    @survey = @subscription.create_coupon_survey
+    @survey.questions.each { | question | @survey.survey_answers.build(question_id: question.id) }
   end
 
   def subscription_params
