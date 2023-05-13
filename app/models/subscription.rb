@@ -18,8 +18,7 @@ class Subscription < ApplicationRecord
   def create_coupon_survey
     return survey if survey
 
-    s = Survey.create(subscription_id: self.id)
-    s.coupon_subscription_questions
+    Survey.create(subscription_id: self.id).tap { |survey| survey.coupon_subscription_questions }
   end
 
 end
