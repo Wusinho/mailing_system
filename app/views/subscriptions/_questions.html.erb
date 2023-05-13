@@ -1,8 +1,20 @@
-<%= form_with model: survey, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' } do |f| %>
+<%= form_with url: questions_path do |f| %>
 
-  <%= f.fields_for :survey_questions do |answer_fields| %>
-    <%= render "subscriptions/answer_form", f: answer_fields, f_parent: f %>
+  <% survey.questions.each do |question| %>
+    <div>
+      <% if question.question_type == 'long_answer' %>
+        <%= question.question %>
+        <%= f.text_field question.id, data: { questions_target: 'questionsForm' }, class: 'answer_input' %>
+      <% else %>
+        <%= question.question %>
+        <%= f.select question.id, question.alternatives, {}, data: { questions_target: 'questionsForm' }, class: 'answer_input' %>
+    <% end %>
+    </div>
   <% end %>
 
-  <div data-nested-form-target="target"></div>
+  <%= f.submit 'Save', data: {
+    controller: 'questions',
+    action: 'questions#submit',
+    survey_id: survey.id
+  } %>
 <% end %>

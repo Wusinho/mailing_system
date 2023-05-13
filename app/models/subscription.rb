@@ -16,10 +16,10 @@ class Subscription < ApplicationRecord
   end
 
   def create_survey
-    survey = Survey.create(subscription_id: self.id)
+    survey = Survey.find_or_create_by(subscription_id: self.id)
     questions = Question.where(category_type: 'coupon_question')
     questions.each do |question|
-      SurveyQuestion.create(survey_id: survey.id, question_id: question.id)
+      SurveyQuestion.find_or_create_by(survey_id: survey.id, question_id: question.id)
     end
   end
 

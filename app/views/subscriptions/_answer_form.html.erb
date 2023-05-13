@@ -1,31 +1,13 @@
-<div class="nested-form-wrapper" data-new-record="<%= f.object.new_record? %>">
+<div class="nested-form-wrapper">
   <% if f.object.question.question_type == 'single_choice' %>
     <%= f.object.question.question %>
     <%= f.select(:question, f.object.question.alternatives, data: {
       controller: 'questions',
       action: 'questions#change'
     }) %>
-
-
   <% else %>
     <%= f.object.question.question %>
-
-
-    <%= form_with model: f.object.question do |form| %>
-      <%= form.fields_for :survey_answers do |answer_fields| %>
-        <% if answer_fields.object.survey_id == f_parent.object.id &&
-          answer_fields.object.question_id == f.object.id
-        %>
-          <%= form.text_field answer_fields.object.answer, data: {
-            controller: 'questions'
-          } %>
-        <% end %>
-      <% end %>
-
-    <% end %>
-
   <% end %>
-  <%= f.submit 'Save Answer' %>
 
 
 </div>
