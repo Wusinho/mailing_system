@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_12_224536) do
   enable_extension "plpgsql"
 
   create_table "questions", force: :cascade do |t|
-    t.string "question_type", null: false
+    t.integer "question_type", null: false
     t.string "question", null: false
     t.string "alternatives", default: [], array: true
     t.string "category_type", null: false
