@@ -24,6 +24,8 @@ class SubscriptionsController < ApplicationController
     @subscription.create_survey
     @survey_questions = @subscription.questions.distinct
     @survey = @subscription.survey
+    @survey_questions.each { | question | @survey.survey_answers.build(question_id: question.id) }
+
   end
 
   def subscription_params

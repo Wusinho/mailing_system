@@ -15,18 +15,32 @@ export default class extends Controller {
     const surver_id = e.target.dataset.surveyId
     let inputs = document.getElementsByClassName('answer_input')
     let params = this.buildAnswersObject(inputs)
-    console.log(params)
+
+    fetch(`/questions`, {
+      method: 'Post',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrtToken
+      },
+      body: JSON.stringify({ questions: params })
+    }).then(r => r.text())
+        .then(html =>{
+          console.log(html)
+        } )
 
   }
 
-  buildAnswersObject(inputs) {
+  buildAnswersObject(inputs, survey_id) {
     let answers = {};
     Object.keys(inputs).forEach(function(key) {
       let input = inputs[key]
-      answers[input.id] = { id: input.id, answer: input.value };
+      answers[input.id] = { id: input.id, answer: input.value, survey_id: survey_id };
     });
 
-    return { "question": { "answers_attributes": answers } };
+    return { "answers_attributes": answers };
   }
 
 
