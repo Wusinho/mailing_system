@@ -3,7 +3,7 @@ class SubscriptionsController < ApplicationController
   before_action :create_survey, only: [:show]
 
   def show
-    @survey_questions = @subscription.questions.distinct
+
   end
   def create
     @subscription = Subscription.new(subscription_params)
@@ -22,6 +22,7 @@ class SubscriptionsController < ApplicationController
 
   def create_survey
     @subscription.create_survey
+    @survey_questions = @subscription.questions.distinct
   end
 
   def subscription_params
