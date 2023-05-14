@@ -1,8 +1,6 @@
 <div>
-  <h5>Get a 20% discount by completing the Survey</h5>
-
-  <%= link_to 'Go to Survey', subscription_path(subscription.id) %>
-
+  <h5><%= t 'survey.index.survey_coupon' %></h5>
+  <%= link_to t('survey.index.survey_redirection'), subscription_path(subscription.id) %>
 </div>
 
 

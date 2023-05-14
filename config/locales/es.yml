@@ -1,5 +1,23 @@
 es:
   activerecord:
+    models:
+      subscription: 'Subscripcion'
+      survey_answer: 'Pregunta'
+    errors:
+      messages:
+        not_saved: "No se pudo guardar el registro."
+      models:
+        subscription:
+          attributes:
+            preferences:
+              blank: 'debe elegir al menos una preferencia'
+            email:
+              blank: "no puede estar vacío"
+              taken: "ese correo esta en uso"
+        survey_answer:
+          attributes:
+            answer:
+              blank: "no puede estar vacío"
   models:
     attributes:
       email: "Correo Electronico"
@@ -15,3 +33,7 @@ es:
     index:
       welcome: "Bienvenido. Pronto lanzaremos nuestro sitio en este país."
       services_html: "Subscribete para recibir nuevas noticias"
+  survey:
+    index:
+      survey_coupon: 'Obtén un 20% de descuento completando la Encuesta'
+      survey_redirection: 'Ir al questionario'

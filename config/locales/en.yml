@@ -15,3 +15,7 @@ en:
     index:
       welcome: "Welcome! Soon we will launch our site in this country."
       services_html: "Subscribe to receive our newsletter"
+  survey:
+    index:
+      survey_coupon: 'Get a 20% discount by completing the Survey'
+      survey_redirection: 'Go to Survey'

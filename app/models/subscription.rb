@@ -3,7 +3,7 @@ class Subscription < ApplicationRecord
   include Categorable
   has_one :survey#, class_name: 'Survey', foreign_key: 'subscription_id'
   has_many :questions, through: :survey
-  # validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :email, presence: true, uniqueness: true#, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :preferences, presence: true
   # validate :email_api_validation
 
