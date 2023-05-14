@@ -14,7 +14,7 @@ class Subscription < ApplicationRecord
     define_method("create_#{category}_survey") do
       return survey if survey
 
-      create_survey.tap { |survey| survey.send("#{category}_questions") }
+      create_survey.tap { |survey| survey.send("create_#{category}_questions") }
                    .tap { |survey| survey.create_survey_answer_instances }
     end
   end

@@ -8,7 +8,7 @@ class Survey < ApplicationRecord
   accepts_nested_attributes_for :survey_answers, allow_destroy: true
 
   QUESTION_CATEGORIES.each do |category|
-    define_method("#{category}_questions") do
+    define_method("create_#{category}_questions") do
       questions = Question.where(category_type: "#{category}_questions")
       questions.each { |question| SurveyQuestion.create(survey_id: self.id, question_id: question.id) }
     end
