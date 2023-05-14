@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
                                               locals: { message: instance.errors.full_messages.to_sentence })
   end
 
+  def default_url_options
+    { locale: I18n.locale }
+  end
+
   def set_locale
     I18n.locale = extract_locale || I18n.default_locale
   end
