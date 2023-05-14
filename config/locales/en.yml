@@ -1,4 +1,20 @@
 en:
+  questions:
+    1:
+      question: "How old are you?"
+    2:
+      question: "What is your education level"
+      alternatives: 'primary high_school collegue university other none'
+    3:
+      question: 'Rate your expirence'
+      alternatives: 'bad medium good excellent'
+    4:
+      question: 'Would you recommed us?'
+      alternatives: 'yes no'
+    5:
+      question: 'How frequent do you visit us?'
+    6:
+      question: 'What else would you like to see?'
   activerecord:
   models:
     attributes:
