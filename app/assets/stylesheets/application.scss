@@ -15,8 +15,10 @@
  */
 @import "bootstrap";
 
+$bg_color: #FFC107;
+
 .error__message {
-  background-color: red;
+  background-color: $bg_color;
   color: white;
   position: absolute;
   border-top-right-radius: 10px;
@@ -35,6 +37,6 @@
   }
   to {
     transform: translateX(0);
-    background-color: red;
+    background-color: $bg_color;
   }
 }

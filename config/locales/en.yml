@@ -33,6 +33,7 @@ en:
       services_html: "Subscribe to receive our newsletter"
   survey:
     index:
+      thanks: 'Thanks for subscribing to our newsletter'
       survey_coupon: 'Get a 20% discount by completing the Survey'
       survey_redirection: 'Go to Survey'
   subscription_email:

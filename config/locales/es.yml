@@ -35,6 +35,7 @@ es:
       services_html: "Subscribete para recibir nuevas noticias"
   survey:
     index:
+      thanks: 'Gracias por suscribirte a nuestro boletín'
       survey_coupon: 'Obtén un 20% de descuento completando la Encuesta'
       survey_redirection: 'Ir al questionario'
   subscription_email:
