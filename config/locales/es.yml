@@ -39,6 +39,8 @@ es:
       thanks: 'Gracias por suscribirte a nuestro boletín'
       survey_coupon: 'Obtén un 20% de descuento completando la Encuesta'
       survey_redirection: 'Ir al questionario'
+      completed: 'Gracias por completar el questionario'
+      home: 'Ir al incio'
   subscription_email:
       subject: ' ¡Bienvenido al Boletín de Noticias de Micolet!'
       welcome: 'Estimado Subscriptor'

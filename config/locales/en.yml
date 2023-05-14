@@ -37,6 +37,8 @@ en:
       thanks: 'Thanks for subscribing to our newsletter'
       survey_coupon: 'Get a 20% discount by completing the Survey'
       survey_redirection: 'Go to Survey'
+      completed: 'Thank you for completing the survey'
+      home: 'Go to Home Page'
   subscription_email:
     subject: 'Welcome to Micolet Newsletter!'
     welcome: 'Dear Subscriber'
