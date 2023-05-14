@@ -24,6 +24,7 @@ en:
   global:
     forms:
       submit: Subscribe me!
+      save: Save
       men: Men's Fashion
       women: Woman's Fashion
       children: Children's Fashion

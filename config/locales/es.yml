@@ -26,6 +26,7 @@ es:
   global:
     forms:
       submit: Subscribete ahora!
+      save: Salvar
       men: 'Moda Masculina'
       women: 'Moda Femenina'
       children: 'Moda Infantil'

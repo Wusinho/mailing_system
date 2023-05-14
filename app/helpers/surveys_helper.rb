@@ -2,17 +2,21 @@ module SurveysHelper
 
   def render_question_form(form)
     t = translation(form)
-    if form.object.question.question_type == 'long_answer'
-      form.label(t) +
-        form.text_field(:answer) +
-        form.hidden_field(:question_id, value: form.object.question.id)
-    else
-      at = alternatives_translation(form)
-      form.label(t) +
-        form.select(:answer, at, {}) +
-        form.hidden_field(:question_id, value: form.object.question.id)
+    question = form.object.question
+    question_type = question.question_type
+
+    content_tag(:div, class: "form-group") do
+      concat form.label(t)
+      if question_type == 'long_answer'
+        concat form.text_field(:answer, class: "form-control")
+      else
+        at = alternatives_translation(form)
+        concat form.select(:answer, at, {}, class: "form-control")
+      end
+      concat form.hidden_field(:question_id, value: question.id)
     end
   end
+
 
   def translation(form)
     return form.object.question.question if default_language?
