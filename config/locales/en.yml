@@ -35,3 +35,10 @@ en:
     index:
       survey_coupon: 'Get a 20% discount by completing the Survey'
       survey_redirection: 'Go to Survey'
+  subscription_email:
+    subject: 'Welcome to Micolet Newsletter!'
+    welcome: 'Dear Subscriber'
+    greetings: "We're thrilled to welcome you to the Micolet family! Thank you for subscribing to our newsletter and choosing to stay up-to-date with our latest offers, promotions, and fashion news."
+    body: "As a valued subscriber, you'll be the first to know about our new arrivals, special discounts, and exclusive offers. You can also expect to receive fashion tips, style advice, and inspiration straight to your inbox."
+    closure: "Thank you again for subscribing to our newsletter. We can't wait to share our passion for fashion with you."
+    ending: 'Best regards, Micolet Team'

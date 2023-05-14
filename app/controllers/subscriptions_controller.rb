@@ -6,9 +6,8 @@ class SubscriptionsController < ApplicationController
   end
   def create
     @subscription = Subscription.new(subscription_params)
-
     if @subscription.save
-      SubscriptionMailer.mailing_subscription(@subscription).deliver_now
+      send_subscription_mail
     else
       turbo_error_message(@subscription)
     end
@@ -18,6 +17,10 @@ class SubscriptionsController < ApplicationController
 
   def set_subscription
     @subscription = Subscription.find(params[:id])
+  end
+
+  def send_subscription_mail
+    SubscriptionMailer.mailing_subscription(@subscription).deliver_now
   end
 
   def create_survey
