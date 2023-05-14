@@ -14,5 +14,8 @@ class Survey < ApplicationRecord
     end
   end
 
+  def create_survey_answer_instances
+    questions.each { |question| self.survey_answers.build(question_id: question.id) }
+  end
 
 end
