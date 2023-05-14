@@ -20,6 +20,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def create_survey
+    # @survey = @subscription.create_other_category_survey
     @survey = @subscription.create_coupon_subscription_survey
     @survey_questions = @survey.questions
     @survey_questions.each { | question | @survey.survey_answers.build(question_id: question.id) }

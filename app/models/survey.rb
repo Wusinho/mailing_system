@@ -1,7 +1,7 @@
 class Survey < ApplicationRecord
   include Categorable
 
-  belongs_to :subscription, foreign_key: 'subscription_id'
+  belongs_to :subscription#, foreign_key: 'subscription_id'
   has_many :survey_questions
   has_many :questions, through: :survey_questions
   has_many :survey_answers
