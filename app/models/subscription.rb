@@ -12,7 +12,6 @@ class Subscription < ApplicationRecord
 
   QUESTION_CATEGORIES.each do |category|
     define_method("create_#{category}_survey") do
-      return survey if survey
 
       create_survey.tap { |survey| survey.send("create_#{category}_questions") }
                    .tap { |survey| survey.create_survey_answer_instances }
@@ -26,7 +25,7 @@ class Subscription < ApplicationRecord
   end
 
   def create_survey
-    Survey.create(subscription_id: self.id)
+    Survey.find_or_create_by(subscription_id: self.id)
   end
 
 end

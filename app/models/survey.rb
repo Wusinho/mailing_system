@@ -10,7 +10,7 @@ class Survey < ApplicationRecord
   QUESTION_CATEGORIES.each do |category|
     define_method("create_#{category}_questions") do
       questions = Question.where(category_type: "#{category}_questions")
-      questions.each { |question| SurveyQuestion.create(survey_id: self.id, question_id: question.id) }
+      questions.each { |question| SurveyQuestion.find_or_create_by(survey_id: self.id, question_id: question.id) }
     end
   end
 
