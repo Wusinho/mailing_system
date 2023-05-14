@@ -7,7 +7,7 @@ class SubscriptionsController < ApplicationController
   def create
     @subscription = Subscription.new(subscription_params)
     if @subscription.save
-      # send_subscription_mail
+      send_subscription_mail
     else
       turbo_error_message(@subscription)
     end
@@ -20,7 +20,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def send_subscription_mail
-    SubscriptionMailer.mailing_subscription(@subscription).deliver_now
+    SubscriptionMailer.mailing_subscription(@subscription).deliver_later
   end
 
   def create_survey
