@@ -9,6 +9,8 @@ class Subscription < ApplicationRecord
 
   PREFERENCES = %w[men women children]
   validates :preferences, inclusion: { in: PREFERENCES, allow_blank: true }
+  after_create_commit :create_subscription_email
+
 
   QUESTION_CATEGORIES.each do |category|
     define_method("create_#{category}_survey") do
@@ -16,6 +18,10 @@ class Subscription < ApplicationRecord
       create_survey.tap { |survey| survey.send("create_#{category}_questions") }
                    .tap { |survey| survey.create_survey_answer_instances }
     end
+  end
+
+  def create_subscription_email
+
   end
 
   def email_api_validation

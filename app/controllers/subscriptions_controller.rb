@@ -8,6 +8,7 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.new(subscription_params)
 
     if @subscription.save
+      SubscriptionMailer.mailing_subscription(@subscription).deliver_now
     else
       turbo_error_message(@subscription)
     end
