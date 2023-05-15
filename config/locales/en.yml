@@ -16,11 +16,12 @@ en:
     6:
       question: 'What else would you like to see?'
   activerecord:
-  models:
+    models:
+      attributes:
+        email: "Email"
+        preferences: "Preferences :"
     attributes:
-      email: "Email"
-      email_placeholder: 'your@email.com'
-      preferences: "Preferences :"
+      email_placeholder: "your@email.com"
   global:
     forms:
       submit: Subscribe me!

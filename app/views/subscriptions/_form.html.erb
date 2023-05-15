@@ -1,15 +1,15 @@
 <%= form_with model: subscription, id: 'subscription_form' do |form| %>
   <div class="mb-3">
-    <%= form.label t('models.attributes.email'), class: 'form-label' %>
-    <%= form.text_field :email, placeholder: t('models.attributes.email_placeholder'), class: 'form-control' %>
+    <%= form.label :email, t('activerecord.subscription.attributes.user.email'), class: 'form-label' %>
+    <%= form.text_field :email, placeholder: t('activerecord.attributes.email_placeholder'), class: 'form-control' %>
   </div>
 
   <div class="mb-3">
-    <%= form.label t 'models.attributes.preferences' %>
+    <%= form.label :preferences, t('models.attributes.preferences') %>
     <% Subscription::PREFERENCES.each do |preference| %>
       <div>
         <%= form.check_box :preferences, { multiple: true }, preference, nil %>
-        <%= form.label fashion_preferences(preference) %>
+        <%= form.label :preferences, fashion_preferences(preference) %>
       </div>
     <% end %>
   </div>

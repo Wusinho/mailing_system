@@ -1,0 +1,51 @@
+pt:
+  questions:
+    1:
+      question: "Qual a sua idade?"
+    2:
+      question: "Qual o seu nível de educação?"
+      alternatives: 'primário ensino_médio faculdade universidade outro nenhum'
+    3:
+      question: 'Avalie sua experiência'
+      alternatives: 'ruim médio bom excelente'
+    4:
+      question: 'Você nos recomendaria?'
+      alternatives: 'sim nao'
+    5:
+      question: 'Com que frequencia voce nos visita?'
+    6:
+      question: 'O que mais voce gostaria de ver?'
+  activerecord:
+    models:
+      subscription:
+        attributes:
+          email: "Email"
+          email_placeholder: 'seu@email.com'
+          preferences: "Preferencias :"
+    attributes:
+      email_placeholder: "Seu@email.com"
+  global:
+    forms:
+      submit: Inscreva-me!
+      save: Salvar
+      men: Moda Masculina
+      women: Moda Feminina
+      children: Moda Infantil
+  home_page:
+    index:
+      welcome: "Bem-vindo! Em breve lançaremos nosso site neste país."
+      services_html: "Inscreva-se para receber nosso boletim informativo"
+  survey:
+    index:
+      thanks: 'Obrigado por se inscrever em nosso boletim informativo'
+      survey_coupon: 'Ganhe um desconto de 20% completando a pesquisa'
+      survey_redirection: 'Ir para a Pesquisa'
+      completed: 'Obrigado por completar a pesquisa'
+      home: 'Vá para a página inicial'
+  subscription_email:
+    subject: 'Bem-vindo ao Boletim Informativo Micolet!'
+    welcome: 'Caro inscrito'
+    greetings: "Estamos muito felizes em recebê-lo na família Micolet! Obrigado por se inscrever em nosso boletim informativo e escolher ficar atualizado com nossas últimas ofertas, promoções e notícias de moda."
+    body: "Como um inscrito valioso, você será o primeiro a saber sobre nossas novidades, descontos especiais e ofertas exclusivas. Você também pode esperar receber dicas de moda, conselhos de estilo e inspiração diretamente na sua caixa de entrada."
+    closure: "Obrigado novamente por se inscrever em nosso boletim informativo. Mal podemos esperar para compartilhar nossa paixão pela moda com você."
+    ending: 'Atenciosamente, Equipe Micolet'
