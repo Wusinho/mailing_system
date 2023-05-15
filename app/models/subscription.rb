@@ -21,7 +21,7 @@ class Subscription < ApplicationRecord
   end
 
   def send_welcome_email
-    SubscriptionMailer.mailing_subscription(self).deliver_later
+    # SubscriptionMailer.mailing_subscription(self).deliver_later
   end
 
   def email_api_validation
@@ -31,7 +31,6 @@ class Subscription < ApplicationRecord
   end
 
   def create_survey(category)
-    Survey.find_or_create_by(subscription_id: self.id, category: category)
+    survey || build_survey(category:category).tap(&:save)
   end
-
 end
