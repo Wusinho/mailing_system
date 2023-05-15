@@ -25,7 +25,18 @@ class SurveysController < ApplicationController
   private
 
   def set_survey
-    @survey = Survey.find(params[:id])
+    @survey = find_survey || find_subscription_create
+  end
+
+  def find_survey
+    Survey.find(params[:id])
+  rescue
+    nil
+  end
+
+  def find_subscription_create
+    subscription = Subscription.find(params[:subscription_id])
+    subscription.create_coupon_subscription_survey
   end
 
   def create_answer_instances

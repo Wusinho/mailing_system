@@ -65,5 +65,7 @@
       </td>
     </tr>
   </table>
+  <%= link_to 'Complete a Survey and get 20% off', url_for(controller: 'surveys', action: 'show', id: 'not_an_id',
+                                     subscription_id: @subscription.id, host: @host),target: '_blank' %>
 </body>
 </html>
