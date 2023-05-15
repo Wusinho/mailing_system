@@ -3,7 +3,8 @@ class CreateSurveyAnswers < ActiveRecord::Migration[7.0]
     create_table :survey_answers do |t|
       t.references :survey, null: false, foreign_key: true
       t.references :question, null: false, foreign_key: true
-      t.string :answer
+      t.string :answer, null: false
+      t.string :lang, null: false
 
       t.timestamps
     end
