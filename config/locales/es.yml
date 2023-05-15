@@ -35,6 +35,12 @@ es:
     index:
       welcome: "Bienvenido. Pronto lanzaremos nuestro sitio en este país."
       services_html: "Subscribete para recibir nuevas noticias"
+      section: 'Seccion'
+      home: "Pagina Inicial"
+      features: 'Caracteristicas'
+      pricing: 'Precios'
+      faqs: 'Preguntas Frequentes'
+      about: 'About'
   survey:
     index:
       thanks: 'Gracias por suscribirte a nuestro boletín'

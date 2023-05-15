@@ -35,6 +35,12 @@ pt:
     index:
       welcome: "Bem-vindo! Em breve lançaremos nosso site neste país."
       services_html: "Inscreva-se para receber nosso boletim informativo"
+      section: 'Seção'
+      home: "Página inicial"
+      features: 'Recursos'
+      pricing: 'Preços'
+      faqs: 'Perguntas frequentes'
+      about: 'About'
   survey:
     index:
       thanks: 'Obrigado por se inscrever em nosso boletim informativo'

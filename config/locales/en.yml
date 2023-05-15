@@ -33,6 +33,12 @@ en:
     index:
       welcome: "Welcome! Soon we will launch our site in this country."
       services_html: "Subscribe to receive our newsletter"
+      section: 'Section'
+      home: "Home"
+      features: 'Features'
+      pricing: 'Pricing'
+      faqs: 'FAQs'
+      about: 'About'
   survey:
     index:
       thanks: 'Thanks for subscribing to our newsletter'
