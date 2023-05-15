@@ -3,7 +3,4 @@ class HomeController < ApplicationController
     @subscription = Subscription.new
   end
 
-
-
-
 end

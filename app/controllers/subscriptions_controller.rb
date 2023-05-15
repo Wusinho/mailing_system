@@ -1,15 +1,10 @@
 class SubscriptionsController < ApplicationController
-  before_action :set_subscription, only: [:show]
-  before_action :create_survey, only: [:show]
 
-  def show
-  end
   def create
     @subscription = Subscription.new(subscription_params)
     if @subscription.save
       render turbo_stream: turbo_stream.replace('subscription_form', partial: 'surveys/survey_link', locals:
-        { subscription: @subscription,
-          survey: Survey.new})
+        { subscription: @subscription })
     else
       turbo_error_message(@subscription)
     end
@@ -17,17 +12,8 @@ class SubscriptionsController < ApplicationController
 
   private
 
-  def set_subscription
-    @subscription = Subscription.find(params[:id])
-  end
-
-  def create_survey
-    @survey = @subscription.create_coupon_subscription_survey
-  end
-
   def subscription_params
     params.require(:subscription).permit(:email, preferences: [])
   end
-
 
 end

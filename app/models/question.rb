@@ -5,4 +5,8 @@ class Question < ApplicationRecord
   accepts_nested_attributes_for :survey_answers, allow_destroy: true
   enum question_type: { single_choice: 0, long_answer: 1 }
 
+  def self.find_cat_type(category)
+    Question.where(category_type: "#{category}_questions")
+  end
+
 end

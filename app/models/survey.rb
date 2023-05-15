@@ -8,9 +8,9 @@ class Survey < ApplicationRecord
   accepts_nested_attributes_for :survey_answers, allow_destroy: true
   after_create_commit :create_questions
 
-    QUESTION_CATEGORIES.each do |category|
+  QUESTION_CATEGORIES.each do |category|
       define_method("create_#{category}_questions") do
-        questions = Question.where(category_type: "#{category}_questions")
+        questions = Question.find_cat_type(category)
         return create_survey_questions(questions) if survey_questions.present?
         survey_questions
       end
@@ -24,7 +24,7 @@ class Survey < ApplicationRecord
     end
 
   def create_questions
-    questions = Question.where(category_type: category)
+    questions = Question.find_cat_type(category)
     question_ids = questions.pluck(:id)
 
     question_ids.each do |question_id|

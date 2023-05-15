@@ -14,8 +14,7 @@ class SurveysController < ApplicationController
   end
 
   def create
-
-    @survey = Survey.new(survey_params)
+    @survey = Survey.new(survey_create_params)
     if @survey.save
       redirect_to survey_path(@survey)
     else
@@ -33,6 +32,9 @@ class SurveysController < ApplicationController
     @survey.create_survey_answer_instances
   end
 
+  def survey_create_params
+    params.permit(:subscription_id, :category)
+  end
 
   def survey_params
     params.require(:survey).permit(:completed, :subscription_id, :category, survey_answers_attributes: [:answer, :question_id])

@@ -4,11 +4,7 @@
   </div>
   <div class="card-body">
     <h5 class="card-title"><%= t 'survey.index.survey_coupon' %></h5>
-    <%= form_with model: survey do |f| %>
-      <%= f.hidden_field :subscription_id, value: subscription.id %>
-      <%= f.hidden_field :category, value: 'coupon_subscription_questions' %>
-      <%= f.submit t('survey.index.survey_redirection'), class: green_btn %>
-    <% end %>
+    <%= render 'surveys/form', subscription: @subscription, category_name: 'coupon_subscription' %>
   </div>
 </div>
 
