@@ -1,6 +1,4 @@
-<div class="container">
-  <%= form_with model: survey, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' } do |f| %>
-
+  <%= form_with model: survey do |f| %>
     <%= f.fields_for :survey_answers do |form| %>
        <%= render 'questions/survey_answers', form: form %>
     <% end %>
@@ -8,5 +6,3 @@
     <%= f.hidden_field :completed, value: true %>
     <%= f.submit t('global.forms.save'), class: green_btn %>
   <% end %>
-  <%= render 'shared/redirect_home' %>
-</div>

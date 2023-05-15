@@ -3,7 +3,7 @@ module SurveysHelper
   def render_question_form(form)
     t = translation(form)
     numbering = (form.index + 1).to_s
-    label_number = numbering + ' ' + t
+    label_number = "#{numbering}- #{t}"
     question = form.object.question
     question_type = question.question_type
 
