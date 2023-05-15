@@ -7,7 +7,7 @@ class SubscriptionsController < ApplicationController
   def create
     @subscription = Subscription.new(subscription_params)
     if @subscription.save
-      send_subscription_mail
+      render turbo_stream: turbo_stream.replace('subscription_form', partial: 'surveys/survey_link', locals: { subscription: @subscription})
     else
       turbo_error_message(@subscription)
     end
@@ -17,10 +17,6 @@ class SubscriptionsController < ApplicationController
 
   def set_subscription
     @subscription = Subscription.find(params[:id])
-  end
-
-  def send_subscription_mail
-    SubscriptionMailer.mailing_subscription(@subscription).deliver_later
   end
 
   def create_survey

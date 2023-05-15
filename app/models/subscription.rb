@@ -6,6 +6,7 @@ class Subscription < ApplicationRecord
   validates :email, presence: true, uniqueness: true#, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :preferences, presence: true
   # validate :email_api_validation
+  after_create_commit :send_welcome_email
 
   PREFERENCES = %w[men women children]
   validates :preferences, inclusion: { in: PREFERENCES, allow_blank: true }
@@ -17,6 +18,10 @@ class Subscription < ApplicationRecord
       create_survey(category).tap { |survey| survey.send("create_#{category}_questions") }
                              .tap { |survey| survey.create_survey_answer_instances }
     end
+  end
+
+  def send_welcome_email
+    SubscriptionMailer.mailing_subscription(self).deliver_later
   end
 
   def email_api_validation
