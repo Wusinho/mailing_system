@@ -9,19 +9,14 @@ class Subscription < ApplicationRecord
 
   PREFERENCES = %w[men women children]
   validates :preferences, inclusion: { in: PREFERENCES, allow_blank: true }
-  after_create_commit :create_subscription_email
 
 
   QUESTION_CATEGORIES.each do |category|
     define_method("create_#{category}_survey") do
 
-      create_survey.tap { |survey| survey.send("create_#{category}_questions") }
-                   .tap { |survey| survey.create_survey_answer_instances }
+      create_survey(category).tap { |survey| survey.send("create_#{category}_questions") }
+                             .tap { |survey| survey.create_survey_answer_instances }
     end
-  end
-
-  def create_subscription_email
-
   end
 
   def email_api_validation
@@ -30,8 +25,8 @@ class Subscription < ApplicationRecord
     errors.add(:email, 'Please provide a valid email')
   end
 
-  def create_survey
-    Survey.find_or_create_by(subscription_id: self.id)
+  def create_survey(category)
+    Survey.find_or_create_by(subscription_id: self.id, category: category)
   end
 
 end
