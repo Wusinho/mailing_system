@@ -24,4 +24,8 @@ class Subscription < ApplicationRecord
     errors.add(:email, I18n.t('activerecord.errors.models.subscription.attributes.email.invalid'))
   end
 
+  def completed_survey?
+    survey&.completed
+  end
+
 end

@@ -1,6 +1,7 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:update, :show]
   before_action :create_answer_instances, only: [:show]
+  before_action :set_subscription, only: [:create]
   def update
     if @survey.update(survey_params)
         redirect_to root_path
@@ -27,6 +28,13 @@ class SurveysController < ApplicationController
   def set_survey
     @survey = Survey.find_by(id: params[:id]) || find_subscription_create
   end
+
+  def set_subscription
+    subscription = Subscription.find(params[:subscription_id])
+
+    redirect_to survey_path(subscription.survey) if subscription.completed_survey?
+  end
+
 
   def find_subscription_create
     subscription = Subscription.find(params[:subscription_id])
