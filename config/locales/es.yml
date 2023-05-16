@@ -6,6 +6,7 @@ es:
     errors:
       messages:
         not_saved: "No se pudo guardar el registro."
+        record_invalid: 'Registro invalido'
       models:
         subscription:
           attributes:
