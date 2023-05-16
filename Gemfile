@@ -76,6 +76,7 @@ group :test do
   gem "webdrivers"
   gem 'shoulda-matchers', '~> 5.2'
   gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
 end
 
 gem 'bootstrap', '~> 5.1.3'

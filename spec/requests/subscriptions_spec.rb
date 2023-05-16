@@ -1,46 +1,46 @@
 require 'rails_helper'
-#
-# spec/controllers/subscriptions_controller_spec.rb
 
-RSpec.describe SubscriptionsController, type: :controller do
+RSpec.describe SubscriptionsController, type: :request do
   describe 'POST #create' do
-    context 'with valid parameters' do
-      let(:valid_params) do
-        { subscription: FactoryBot.attributes_for(:subscription) }
-      end
+    context 'with valid attributes' do
+      let(:valid_attributes) { attributes_for(:subscription) }
+      let(:valid_attributes2) { attributes_for(:subscription) }
 
-      it 'creates a new subscription' do
+      it 'saves the new subscription' do
         expect {
-          post :create, params: valid_params
+          post subscriptions_path, params: { subscription: valid_attributes }
         }.to change(Subscription, :count).by(1)
       end
 
-      it 'renders the turbo_stream replace response' do
-        post :create, params: valid_params
-        expect(response).to have_http_status(:success)
-        # expect(response.body).to include('subscription_form')
-        # expect(response.body).to include('surveys/survey_link')
-        # Add any additional expectations for the turbo_stream response
+      it 'sends a subscription email' do
+        expect {
+          post subscriptions_path, params: { subscription: valid_attributes }
+        }.to have_enqueued_mail(SubscriptionMailer)
+      end
+
+      it 'renders the turbo stream response' do
+        post subscriptions_path, params: { subscription: valid_attributes2 }, xhr: true
+        # expect(response).to have_http_status(:ok)
+        # expect(response.body).to include('"<turbo-stream action=\"replace\" target=\"subscription_form\"><template></template></turbo-stream>"')
+        expect(response.body).to render_template('surveys/_survey_link')
       end
     end
 
-    context 'with invalid parameters' do
-      let(:invalid_params) do
-        { subscription: FactoryBot.attributes_for(:subscription, email: '') }
-      end
-
-      # it 'does not create a new subscription' do
-      #   expect {
-      #     post :create, params: invalid_params
-      #   }.not_to change(Subscription, :count)
-      # end
-
-      # it 'renders the error message' do
-      #   post :create, params: invalid_params
-      #   expect(response).to have_http_status(:unprocessable_entity)
-      #   expect(response.body).to include('error message')
-      #   # Add any additional expectations for the error message
-      # end
-    end
+    # context 'with invalid attributes' do
+    #   let(:invalid_attributes) { attributes_for(:subscription, email: nil) }
+    #
+    #   it 'does not save the new subscription' do
+    #     expect {
+    #       post :create, params: { subscription: invalid_attributes }
+    #     }.not_to change(Subscription, :count)
+    #   end
+    #
+    #   it 'renders the turbo error message' do
+    #     post :create, params: { subscription: invalid_attributes }
+    #     expect(response).to have_http_status(:unprocessable_entity)
+    #     expect(response.body).to include('Subscription could not be saved')
+    #   end
+    # end
   end
 end
+
