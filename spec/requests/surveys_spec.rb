@@ -36,21 +36,17 @@ RSpec.describe SurveysController, type: :request do
   end
 
   describe 'PATCH #update' do
-    let!(:survey) { create(:survey) }
-    let!(:valid_attributes) { { completed: true } }
-    let!(:q1) { create(:question) }
-    let!(:q2) { create(:question) }
-    let!(:sq1) { create(:survey_question, survey: survey, question: q1) }
-    let!(:sq2) { create(:survey_question, survey: survey, question: q2) }
-
+    let(:questions) { create_list :question, 2}
+    let(:survey) { create(:survey) }
+    let(:valid_attributes) { { completed: true } }
 
     context 'with valid attributes' do
       let(:valid_survey) do
         {
           completed: true,
           survey_answers_attributes: {
-            '0' => { question_id: q1.id, answer: 'Updated answer 1' },
-            '1' => { question_id: q2.id, answer: 'Updated answer 2' },
+            '0' => { question_id: questions.first.id, answer: 'Updated answer 1' },
+            '1' => { question_id: questions.last.id, answer: 'Updated answer 2' },
         }
       }
       end
@@ -59,19 +55,19 @@ RSpec.describe SurveysController, type: :request do
         {
           completed: true,
           survey_answers_attributes: {
-            '0' => { question_id: q1.id, answer: '' },
-            '1' => { question_id: q2.id, answer: '' },
+            '0' => { question_id: questions.first.id, answer: '' },
+            '1' => { question_id: questions.last.id, answer: '' },
           }
         }
       end
 
-      it 'updates the survey' do
+      it 'updates the survey and redirects' do
         patch survey_path(locale: I18n.locale.to_s, id: survey.id), params: { id: survey.id, survey: valid_survey }, xhr: true
         expect(Survey.last.completed).to eq(true)
         expect(response).to redirect_to(root_path)
       end
 
-      it 'does not update when passing empty answers' do
+      it 'does not update when passing empty answers and returns an error message' do
         patch survey_path(locale: I18n.locale.to_s, id: survey.id), params: { id: survey.id, survey: invalid_survey }, xhr: true
         expect(Survey.last.completed).to eq(false)
         expect(response.body).to render_template('shared/_error_message')
