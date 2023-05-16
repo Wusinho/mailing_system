@@ -4,7 +4,7 @@ class SurveysController < ApplicationController
   before_action :set_subscription, only: [:create]
   def update
     if @survey.update(survey_params)
-        redirect_to root_path
+        redirect_to survey_path(@survey)
       else
         turbo_error_message(@survey)
     end
