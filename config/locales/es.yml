@@ -15,6 +15,7 @@ es:
             email:
               blank: "no puede estar vacío"
               taken: "ese correo esta en uso"
+              invalid: 'Correo invalido'
         survey_answer:
           attributes:
             answer:
