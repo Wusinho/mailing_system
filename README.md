@@ -28,6 +28,7 @@ For the development of the project, the following tools were used:
 
 - Rails v 7.0.4
 - Ruby 3.2.0
+- Postgresql
 - Bootstrap v 5.1.3
 
 The purpose of the exercise is to build a landing page with a functional newsletter submission. 
@@ -57,7 +58,7 @@ By implementing these enhancements, we can elevate the professionalism and effec
 | PATCH  | surveys |      Update Survey Answer's |
 
 ## How to start the project from your Local environment
-
+- This project runs on `ruby "3.2.0"`, please switch the ruby version
 - Open your terminal and cd where you want to store the project
 - Run the following command in the terminal
 ```bash
