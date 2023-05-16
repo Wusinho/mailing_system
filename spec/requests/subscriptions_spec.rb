@@ -20,27 +20,39 @@ RSpec.describe SubscriptionsController, type: :request do
 
       it 'renders the turbo stream response' do
         post subscriptions_path, params: { subscription: valid_attributes2 }, xhr: true
-        # expect(response).to have_http_status(:ok)
-        # expect(response.body).to include('"<turbo-stream action=\"replace\" target=\"subscription_form\"><template></template></turbo-stream>"')
+        expect(response).to have_http_status(:ok)
         expect(response.body).to render_template('surveys/_survey_link')
       end
     end
 
-    # context 'with invalid attributes' do
-    #   let(:invalid_attributes) { attributes_for(:subscription, email: nil) }
-    #
-    #   it 'does not save the new subscription' do
-    #     expect {
-    #       post :create, params: { subscription: invalid_attributes }
-    #     }.not_to change(Subscription, :count)
-    #   end
-    #
-    #   it 'renders the turbo error message' do
-    #     post :create, params: { subscription: invalid_attributes }
-    #     expect(response).to have_http_status(:unprocessable_entity)
-    #     expect(response.body).to include('Subscription could not be saved')
-    #   end
-    # end
+    context 'with invalid attributes' do
+      let(:invalid_attributes) { attributes_for(:subscription, email: nil) }
+
+      it 'does not save the new subscription' do
+        expect {
+          post subscriptions_path, params: { subscription: invalid_attributes }
+        }.not_to change(Subscription, :count)
+      end
+
+      it 'renders the turbo error message' do
+        post subscriptions_path, params: { subscription: invalid_attributes }, xhr: true
+        expect(response.body).to render_template('shared/_error_message')
+      end
+
+    end
+
+    context 'with duplicated email' do
+      let(:subscription) { create(:subscription) }
+
+      it 'renders the turbo error message' do
+        post subscriptions_path, params: { subscription: {:email=>subscription.email, :preferences=>["men"]}
+        }, xhr: true
+        expect(response.body).to render_template('shared/_error_message')
+      end
+
+    end
+
+
   end
 end
 
