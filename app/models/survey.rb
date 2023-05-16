@@ -7,6 +7,7 @@ class Survey < ApplicationRecord
   has_many :survey_answers
   accepts_nested_attributes_for :survey_answers, allow_destroy: true
   after_create_commit :create_questions
+  validates_presence_of :category
 
   def create_questions
     questions = Question.find_cat_type(category)

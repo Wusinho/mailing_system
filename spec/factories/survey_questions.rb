@@ -1,6 +1,5 @@
 FactoryBot.define do
-  factory :survey_answer do
-    answer { "MyString" }
+  factory :survey_question do
     survey
     question
   end

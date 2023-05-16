@@ -18,6 +18,10 @@ es:
           attributes:
             answer:
               blank: "no puede estar vacío"
+        survey:
+          attributes:
+            subscription:
+              required: 'Se necesita de la subscripcion'
     attributes:
       email_placeholder: "tu@correo.com"
   models:
