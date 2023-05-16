@@ -1,18 +1,20 @@
 <%= form_with model: subscription, id: 'subscription_form' do |form| %>
-  <div class="field">
-    <%= form.label t 'models.attributes.email' %>
-    <%= form.text_field :email, placeholder: t('models.attributes.email_placeholder') %>
+  <div class="mb-3">
+    <%= form.label :email, t('activerecord.subscription.attributes.user.email'), class: 'form-label' %>
+    <%= form.text_field :email, placeholder: t('activerecord.attributes.email_placeholder'), class: 'form-control' %>
   </div>
 
-  <h4><%= t 'models.attributes.preferences' %></h4>
+  <div class="mb-3">
+    <%= form.label :preferences, t('models.attributes.preferences') %>
     <% Subscription::PREFERENCES.each do |preference| %>
       <div>
         <%= form.check_box :preferences, { multiple: true }, preference, nil %>
-        <%= fashion_preferences(preference, form) %>
+        <%= form.label :preferences, fashion_preferences(preference) %>
       </div>
     <% end %>
+  </div>
 
-  <div class="actions">
-    <%= form.submit t 'global.forms.submit', data: { disable: false } %>
+  <div class="mb-3">
+    <%= form.submit t('global.forms.submit'), class: green_btn %>
   </div>
 <% end %>

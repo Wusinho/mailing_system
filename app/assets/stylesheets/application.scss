@@ -14,3 +14,30 @@
  *= require_self
  */
 @import "bootstrap";
+
+$bg_color: #FFC107;
+
+.error__message {
+  background-color: $bg_color;
+  color: white;
+  position: absolute;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: error-slide-in 2s;
+  animation-timing-function: ease;
+}
+
+@keyframes error-slide-in {
+  from {
+    transform: translateX(50vw);
+    background-color: white;
+  }
+  to {
+    transform: translateX(0);
+    background-color: $bg_color;
+  }
+}
+

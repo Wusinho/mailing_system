@@ -1,13 +1,39 @@
 es:
   activerecord:
+    models:
+      subscription: 'Subscripcion'
+      survey_answer: 'Pregunta'
+    errors:
+      messages:
+        not_saved: "No se pudo guardar el registro."
+        record_invalid: 'Registro invalido'
+      models:
+        subscription:
+          attributes:
+            preferences:
+              blank: 'debe elegir al menos una preferencia'
+            email:
+              blank: "no puede estar vacío"
+              taken: "ese correo esta en uso"
+              invalid: 'Correo invalido'
+        survey_answer:
+          attributes:
+            answer:
+              blank: "no puede estar vacío"
+        survey:
+          attributes:
+            subscription:
+              required: 'Se necesita de la subscripcion'
+    attributes:
+      email_placeholder: "tu@correo.com"
   models:
     attributes:
       email: "Correo Electronico"
-      email_placeholder: 'tu@correo.com'
       preferences: "Preferencias :"
   global:
     forms:
       submit: Subscribete ahora!
+      save: Salvar
       men: 'Moda Masculina'
       women: 'Moda Femenina'
       children: 'Moda Infantil'
@@ -15,3 +41,23 @@ es:
     index:
       welcome: "Bienvenido. Pronto lanzaremos nuestro sitio en este país."
       services_html: "Subscribete para recibir nuevas noticias"
+      section: 'Seccion'
+      home: "Pagina Inicial"
+      features: 'Caracteristicas'
+      pricing: 'Precios'
+      faqs: 'Preguntas Frequentes'
+      about: 'About'
+  survey:
+    index:
+      thanks: 'Gracias por suscribirte a nuestro boletín'
+      survey_coupon: 'Obtén un 20% de descuento completando la Encuesta'
+      survey_redirection: 'Ir al questionario'
+      completed: 'Gracias por completar el questionario'
+      home: 'Ir al incio'
+  subscription_email:
+      subject: ' ¡Bienvenido al Boletín de Noticias de Micolet!'
+      welcome: 'Estimado Subscriptor'
+      greetings: '¡Estamos encantados de darte la bienvenida a la familia de Micolet! Gracias por suscribirte a nuestro boletín de noticias y elegir estar     al tanto de nuestras últimas ofertas, promociones y noticias de moda.'
+      body: 'Como suscriptor/a valioso/a, serás el/la primero/a en enterarte de nuestros nuevos productos, descuentos especiales y ofertas exclusivas. También puedes esperar recibir consejos de moda, consejos de estilo e inspiración directamente en tu bandeja de entrada.'
+      closure: 'Siempre estamos trabajando para mejorar nuestros servicios y asegurarnos de brindar la mejor experiencia de compra posible para nuestros clientes. Entonces, si tienes alguna sugerencia, pregunta o comentario, no dudes en contactarnos. ¡Nos encantaría saber de ti!'
+      ending: 'Atentamente, El equipo de Micolet'

@@ -1,8 +1,10 @@
-<div>
-  <h5>Get a 20% discount by completing the Survey</h5>
-
-  <%= link_to 'Go to Survey', subscription_path(subscription.id) %>
-
+<div class="card text-center">
+  <div class="card-header">
+    <%= t 'survey.index.thanks' %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= t 'survey.index.survey_coupon' %></h5>
+    <%= render 'surveys/form', subscription: @subscription, category_name: 'coupon_subscription' %>
+  </div>
 </div>
-
 

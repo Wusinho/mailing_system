@@ -88,4 +88,10 @@ RSpec.configure do |config|
   # config.expect_with :rspec do |c|
   #   c.syntax = :expect
   # end
+
+  [:controller, :view, :request].each do |type|
+    config.include ::Rails::Controller::Testing::TestProcess, :type => type
+    config.include ::Rails::Controller::Testing::TemplateAssertions, :type => type
+    config.include ::Rails::Controller::Testing::Integration, :type => type
+  end
 end

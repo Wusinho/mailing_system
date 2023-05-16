@@ -6,11 +6,15 @@ class Survey < ApplicationRecord
   has_many :questions, through: :survey_questions
   has_many :survey_answers
   accepts_nested_attributes_for :survey_answers, allow_destroy: true
+  after_create_commit :create_questions
+  validates_presence_of :category
 
-  QUESTION_CATEGORIES.each do |category|
-    define_method("create_#{category}_questions") do
-      questions = Question.where(category_type: "#{category}_questions")
-      questions.each { |question| SurveyQuestion.create(survey_id: self.id, question_id: question.id) }
+  def create_questions
+    questions = Question.find_cat_type(category)
+    question_ids = questions.pluck(:id)
+
+    question_ids.each do |question_id|
+      survey_questions.create(question_id: question_id)
     end
   end
 

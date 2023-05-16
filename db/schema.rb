@@ -34,7 +34,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_12_224536) do
   create_table "survey_answers", force: :cascade do |t|
     t.bigint "survey_id", null: false
     t.bigint "question_id", null: false
-    t.string "answer"
+    t.string "answer", null: false
+    t.string "lang", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_survey_answers_on_question_id"
@@ -53,6 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_12_224536) do
   create_table "surveys", force: :cascade do |t|
     t.bigint "subscription_id", null: false
     t.boolean "completed", default: false
+    t.string "category", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subscription_id"], name: "index_surveys_on_subscription_id"
