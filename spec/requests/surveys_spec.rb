@@ -64,7 +64,7 @@ RSpec.describe SurveysController, type: :request do
       it 'updates the survey and redirects' do
         patch survey_path(locale: I18n.locale.to_s, id: survey.id), params: { id: survey.id, survey: valid_survey }, xhr: true
         expect(Survey.last.completed).to eq(true)
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to(survey_path(Survey.last.id))
       end
 
       it 'does not update when passing empty answers and returns an error message' do
