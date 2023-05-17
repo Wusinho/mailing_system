@@ -58,6 +58,9 @@ By implementing these enhancements, we can elevate the professionalism and effec
 | PATCH  | surveys |      Update Survey Answer's |
 
 ## How to start the project from your Local environment
+- For the validation API email validation to work, you need to put your own API KEY on:
+[validatetable.rb](./app/models/concerns/validatetable.rb)
+
 - Open your terminal and cd where you want to store the project
 - Run the following command in the terminal
 ```bash
