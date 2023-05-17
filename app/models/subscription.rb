@@ -3,9 +3,10 @@ class Subscription < ApplicationRecord
   include Categorable
   has_one :survey
   has_many :questions, through: :survey
-  validates :email, presence: true, uniqueness: true#, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :email, presence: true, uniqueness: true
   validates :preferences, presence: true
-  validate :email_api_validation
+  validate :email_api_validation, unless: -> { testing? }
+  validate :email_format, if: -> { Rails.env.test? }
 
   PREFERENCES = %w[men women children]
   validates :preferences, inclusion: { in: PREFERENCES, allow_blank: true }
@@ -26,6 +27,16 @@ class Subscription < ApplicationRecord
 
   def completed_survey?
     survey&.completed
+  end
+
+  def testing?
+    Rails.env.test?
+  end
+
+  def email_format
+    return if email =~ URI::MailTo::EMAIL_REGEXP
+
+    errors.add(:email, "is not in a valid format")
   end
 
 end
