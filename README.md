@@ -1,4 +1,4 @@
-# Micolet coding challenge
+# Mailing System
 
 # Objectives
 
