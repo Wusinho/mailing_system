@@ -1,0 +1,5 @@
+<%= form_with url: surveys_path do |f| %>
+  <%= f.hidden_field :subscription_id, value: subscription.id %>
+  <%= f.hidden_field :category, value: category_name %>
+  <%= f.submit t('survey.index.survey_redirection'), class: green_btn %>
+<% end %>

@@ -11,6 +11,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'shared/language_buttons' %>
+    <%= turbo_frame_tag 'error_message' %>
+    <div class="mt-4">
+      <%= yield %>
+    </div>
+    <%= render 'shared/footer' %>
   </body>
 </html>

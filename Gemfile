@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem 'dotenv-rails', groups: [:development, :test]
 ruby "3.2.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -54,6 +55,7 @@ group :development, :test do
   gem 'faker', '~> 3.0'
   gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
   gem 'factory_bot_rails', '~> 6.2'
+  gem 'letter_opener', '~> 1.8', '>= 1.8.1'
 end
 
 group :development do
@@ -74,6 +76,7 @@ group :test do
   gem "webdrivers"
   gem 'shoulda-matchers', '~> 5.2'
   gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
 end
 
 gem 'bootstrap', '~> 5.1.3'

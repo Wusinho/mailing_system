@@ -1,0 +1,71 @@
+<html lang=<%= I18n.locale %>>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  <style>
+      body {
+          background-color: #f6f6f6;
+          font-family: Arial, sans-serif;
+          font-size: 16px;
+          line-height: 1.4;
+          color: #333;
+      }
+
+      .container {
+          max-width: 600px;
+          margin: 0 auto;
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 3px 10px rgba(0,0,0,.1);
+      }
+
+      .header {
+          font-size: 24px;
+          font-weight: bold;
+          margin-top: 0;
+      }
+
+      .body {
+          margin: 10px 0;
+      }
+
+      .footer {
+          margin-bottom: 0;
+          font-size: 14px;
+          color: #777;
+      }
+  </style>
+  <title>Subscription Email</title>
+</head>
+<body>
+  <table class="container">
+    <tr>
+      <td>
+        <p class="header"><%= t('subscription_email.welcome') %>  </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p class="body"><%= t('subscription_email.greetings') %>  </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p class="body"><%= t('subscription_email.body') %></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p class="body"><%= t('subscription_email.closure') %></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p class="footer"><%= t('subscription_email.ending') %></p>
+      </td>
+    </tr>
+  </table>
+  <%= link_to 'Complete a Survey and get 20% off', url_for(controller: 'surveys', action: 'show', id: 'not_an_id',
+                                     subscription_id: @subscription.id, host: @host),target: '_blank' %>
+</body>
+</html>

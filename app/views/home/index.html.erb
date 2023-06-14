@@ -1,0 +1,14 @@
+<%= render 'home/hero' %>
+<div class="container">
+  <footer class="mt-4">
+    <div class="row">
+      <%= render 'home/list' %>
+      <div class="col-6">
+          <h3><%= t('home_page.index.welcome') %></h3>
+          <p><%= t 'home_page.index.services_html' %></p>
+          <%= render 'subscriptions/form', subscription: @subscription %>
+      </div>
+    </div>
+  </footer>
+</div>
+
