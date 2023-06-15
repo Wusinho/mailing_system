@@ -1,6 +1,6 @@
 # Mailing System
 
-# Objectives
+## Objectives
 
 - The email and user preferences must be stored in Database.
 - The same email cannot be registered twice, an error message will be displayed to the user indicating that the email already exists.
@@ -22,7 +22,7 @@ Extra Ball 3 (Optional):
 
 - After successfully registering the subscriber's email and preferences, the user will be able to answer a survey to obtain a discount coupon. The survey can be a multi-step form of 3-5 questions.
 
-# Description of the Project
+## Description of the Project
 
 For the development of the project, the following tools were used:
 
