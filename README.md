@@ -7,19 +7,9 @@
 - Make a simple validation of the user's input to guarantee that what they have entered complies with the valid format of an email.
 - The user may select one or more preferences, but they must select at least one of them.
 - Once the user has been registered successfully, an email will be sent confirming their subscription.
-
-Extra Ball 1:
-
-- Even if the email has a valid format, that does not mean that it is an existing email. It could be that the domain does not exist, or it is not configured to receive mail. To prevent submitting this type of emails, we will only accept those that obtain a score greater than 0.7 when looking up in this API:
-
-Extra Ball 2:
-
+- Even if the email has a valid format, that does not mean that it is an existing email. It could be that the domain does not exist, or it is not configured to receive mail. To prevent submitting this type of email, we will only accept those that obtain a score greater than 0.7 when looking up in this API:
 - The landing page will be used in several countries, therefore it should be prepared to adapt it to three different languages. This is what we know in software development as internationalization (i18n).
-
 - It is not necessary to translate the texts to other languages, but the project must be prepared to be easily localized without needing to make changes to the code (through a file containing the translations, for example).
-
-Extra Ball 3 (Optional):
-
 - After successfully registering the subscriber's email and preferences, the user will be able to answer a survey to obtain a discount coupon. The survey can be a multi-step form of 3-5 questions.
 
 ## Description of the Project
@@ -31,7 +21,7 @@ For the development of the project, the following tools were used:
 - Postgresql
 - Bootstrap v 5.1.3
 
-The purpose of the exercise is to build a landing page with a functional newsletter submission. 
+The purpose of the project is to build a landing page with a functional newsletter submission. 
 After a user subscribes to the mailer, a message will be sent. There are 2 options to fill in the survey
 from the actual landing_page, and through a link in the mail.
 
