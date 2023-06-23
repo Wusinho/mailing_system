@@ -1,5 +1,9 @@
 # Mailing System
 
+## Summary
+
+The project aims to revolutionize the process of updating and managing portfolios by introducing seamless automation. By leveraging GraphQL requests, the project enables automatic updates of the portfolio based on changes in the user's GitHub profile and pinned repositories.
+
 ## Objectives
 
 - The email and user preferences must be stored in Database.
